@@ -20,6 +20,6 @@ Claude の GitHub App は使わず、`GITHUB_TOKEN`（`github-actions[bot]` 名�
 
 ## セットアップ
 
-1. リポジトリの **Settings > Secrets and variables > Actions** に `ANTHROPIC_API_KEY` を登録する。
+1. リポジトリの **Settings > Secrets and variables > Actions** に `CLAUDE_CODE_OAUTH_TOKEN`（`claude setup-token` で発行）を登録する。
 2. リポジトリに `claude-review` ラベルを作成する。
 3. レビューしてほしいPRに `claude-review` ラベルを付ける。再レビューはラベルを外して付け直す。
