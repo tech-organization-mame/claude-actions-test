@@ -11,15 +11,16 @@ GitHub Actions から [Claude Code Action](https://github.com/anthropics/claude-
 
 ## ワークフロー
 
-`claude-actions.yml` は、プルリクエストに `claude-review` ラベルを付けると起動し、Claude がPRをレビューしてコメントを投稿します。
+`claude-actions.yml` は、プルリクエストに `claude-review` ラベルを付けると起動し（ラベルが付いたPRへの追加pushでも再度起動）、Claude がPRをレビューしてコメントを投稿します。
 Claude の GitHub App は使わず、`GITHUB_TOKEN`（`github-actions[bot]` 名義）で動作します。
 
 | トリガー | 条件 |
 | --- | --- |
 | `pull_request` (labeled) | 付けたラベルが `claude-review` |
+| `pull_request` (synchronize) | PRに `claude-review` ラベルが付いている |
 
 ## セットアップ
 
 1. リポジトリの **Settings > Secrets and variables > Actions** に `CLAUDE_CODE_OAUTH_TOKEN`（`claude setup-token` で発行）を登録する。
 2. リポジトリに `claude-review` ラベルを作成する。
-3. レビューしてほしいPRに `claude-review` ラベルを付ける。再レビューはラベルを外して付け直す。
+3. レビューしてほしいPRに `claude-review` ラベルを付ける。以降はPRにpushするたびに自動で再レビューされる。
